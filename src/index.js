@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import timer from './timer.js'
 
 class App extends React.Component{
   constructor(props){
@@ -11,6 +12,7 @@ class App extends React.Component{
       offsetx: 0,
       offsety: 0,
       timerstarted: 0,
+      timertarget: new Date().getTime() + 1000*20
     }
   }
   clicky = function(){
@@ -27,8 +29,9 @@ class App extends React.Component{
       offsety: Math.random()*500,
       hovercounter: this.state.hovercounter+1,
       timerstarted: 1,
-    })}, 10000)
+    })}, 25)
   }
+
   render(){
     
     return (
@@ -37,6 +40,10 @@ class App extends React.Component{
         <div>
           <h4>Hola, you have clicked {this.state.clickcounter} times <br/>
           you have hovered {this.state.hovercounter} times</h4>
+        </div>
+        <div>
+          <h3>Timer</h3>
+          <timer targetDate={this.state.timertarget}/>
         </div>
         <div>
           <Button
@@ -54,7 +61,7 @@ function Button(props){
     
     <button className = "button" 
     onClick={props.onClick} 
-    onMouseMove = {props.onMove}
+    onMouseEnter = {props.onMove}
     style = {{marginLeft: props.offsetx, marginTop: props.offsety, height: 100}}
     >
       "click me lol"
