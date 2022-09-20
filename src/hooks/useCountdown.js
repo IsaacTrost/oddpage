@@ -15,17 +15,17 @@ const useCountdown = (targetDate) => {
         return () => clearInterval(interval);
     }, [countDownDate]);
     
-    return getReturnValies(countDown);
+    return getReturnValues(countDown);
 };
 
 const getReturnValues = (countDown) => {
 
-    const days = math.floor(countDown / (1000 * 60 * 60 * 24));
-    const hours = math.floor(
+    const days = Math.floor(countDown / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
         (countDown % (1000 * 60 * 60 * 24)) /  1000 * 60 *60);
-    const minutes = math.floor((countDown%(1000 * 60* 60))/(1000*60));
-    const seconds = math.floor((countDown% (1000*60))/1000);
-    const tenths = math.floor((countDown%1000)/100)
+    const minutes = Math.floor((countDown%(1000 * 60* 60))/(1000*60));
+    const seconds = Math.floor((countDown% (1000*60))/1000);
+    const tenths = Math.floor((countDown%1000)/100)
     return [days, hours, minutes, seconds, tenths];
 
 };

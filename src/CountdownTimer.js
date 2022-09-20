@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCountdown } from './hooks/useCountdown';
 
-const timer = ({ targetDate}) => {
+const Timer = ({ targetDate}) => {
     const [days, hours,minutes, seconds, tenths] = useCountdown(targetDate);
     //check if this works, could be a source of problems
     if(days<0){
@@ -13,6 +13,7 @@ const timer = ({ targetDate}) => {
               hours={hours}
               minutes={minutes}
               seconds={seconds}
+              tenths={tenths}
             />
         );
     }
@@ -30,23 +31,14 @@ const ExpiredNotice = () => {
 const ShowCounter = ({ days, hours, minutes, seconds, tenths }) => {
     return (
       <div className="show-counter">
-        <a
-          href="https://tapasadhikary.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="countdown-link"
-        >
-          <DateTimeDisplay value={days} type={'Days'} isDanger={days <= 3} />
-          <p>:</p>
-          <DateTimeDisplay value={hours} type={'Hours'} isDanger={false} />
-          <p>:</p>
+        
           <DateTimeDisplay value={minutes} type={'Mins'} isDanger={false} />
           <p>:</p>
           <DateTimeDisplay value={seconds} type={'Seconds'} isDanger={false} />
           <p>:</p>
-          <DateTimeDisplay value={tenths} type={'tenths'} isDanger={false} />
+          <DateTimeDisplay value={tenths} type={'Tenths'} isDanger={false} />
 
-        </a>
+        
       </div>
     );
   };
@@ -60,4 +52,4 @@ const DateTimeDisplay = ({ value, type, isDanger }) => {
   );
 };
 
-export default timer
+export default Timer

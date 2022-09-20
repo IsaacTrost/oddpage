@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import timer from './timer.js'
+import Timer from './CountdownTimer.js'
 
 class App extends React.Component{
   
@@ -59,7 +59,7 @@ class App extends React.Component{
         </div>
         <div>
           <h3>Timer</h3>
-          <timer targetDate={this.state.timertarget}/>
+          <Timer targetDate={this.state.timertarget}/>
         </div>
         <div>
           <Button
@@ -85,33 +85,6 @@ function Button(props){
   )
 }
 
-function Timer(props){
-  const [timer, setTimer] = React.useState('00:00:00')
-  const getTimeRemaining = (e) => {
-    const total = Date.parse(e) - Date.parse(new Date());
-    const seconds = Math.floor((total / 1000) % 60);
-    const minutes = Math.floor((total / 1000 / 60) % 60);
-    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
-    return {
-        total, hours, minutes, seconds
-    };
-}
-const startTimer = (e) => {
-  let { total, hours, minutes, seconds } 
-              = getTimeRemaining(e);
-  if (total >= 0) {
 
-      // update the timer
-      // check if less than 10 then we need to 
-      // add '0' at the beginning of the variable
-      setTimer(
-          (hours > 9 ? hours : '0' + hours) + ':' +
-          (minutes > 9 ? minutes : '0' + minutes) + ':'
-          + (seconds > 9 ? seconds : '0' + seconds)
-      )
-  }
-}
-
-}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
