@@ -77,7 +77,7 @@ function Button(props){
     
     <button className = "button" 
     onMouseDown={props.onClick} 
-    onMouseMove = {props.onMove}
+    onMouseEnter = {props.onMove}
     style = {{marginLeft: props.offsetx, marginTop: props.offsety, height: 100}}
     >
       "click me lol"

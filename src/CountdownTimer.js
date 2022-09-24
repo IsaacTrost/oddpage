@@ -32,8 +32,7 @@ const ShowCounter = ({ days, hours, minutes, seconds, tenths }) => {
     return (
       <div className="show-counter">
         
-          <DateTimeDisplay value={minutes} type={'Mins'} isDanger={false} />
-          <p>:</p>
+          
           <DateTimeDisplay value={seconds} type={'Seconds'} isDanger={false} />
           <p>:</p>
           <DateTimeDisplay value={tenths} type={'Tenths'} isDanger={false} />
@@ -46,7 +45,7 @@ const ShowCounter = ({ days, hours, minutes, seconds, tenths }) => {
 const DateTimeDisplay = ({ value, type, isDanger }) => {
   return (
     <div className={isDanger ? 'countdown danger' : 'countdown'}>
-      <p>{value}</p>
+      <p>    {value}</p>
       <span>{type}</span>
     </div>
   );
