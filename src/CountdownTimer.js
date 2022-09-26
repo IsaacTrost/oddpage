@@ -1,10 +1,11 @@
 import React from 'react';
 import { useCountdown } from './hooks/useCountdown';
 
-const Timer = ({ targetDate}) => {
+const Timer = ({ targetDate, endTimer}) => {
     const [days, hours,minutes, seconds, tenths] = useCountdown(targetDate);
     //check if this works, could be a source of problems
     if(days<0){
+        endTimer()
         return <ExpiredNotice/>;
     } else {
         return (
@@ -45,7 +46,7 @@ const ShowCounter = ({ days, hours, minutes, seconds, tenths }) => {
 const DateTimeDisplay = ({ value, type, isDanger }) => {
   return (
     <div className={isDanger ? 'countdown danger' : 'countdown'}>
-      <p>    {value}</p>
+      <p>{value}</p>
       <span>{type}</span>
     </div>
   );
